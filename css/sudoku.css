@@ -1,0 +1,33 @@
+
+*{margin:0;padding:0;}
+ 
+/* 九宫格：基本实现原理 */
+/* 1、将总容器.box设置为相对定位并设置overflow:hidden;让超出它的地方全部被切除
+.box { position:relative; overflow:hidden; margin:50px auto; padding:10px; background-color:#F34703; width:50%}*/
+.box { position:relative; overflow:hidden; width:100%; height:100% }
+ 
+/* 2、将其里面的八个方向的div设为绝对定位 */
+.t_l,.t_m,.t_r, .b_l,.b_m,.b_r, .m_l,.m_r{ position:absolute;}
+ 
+/* 3、设置四个顶角容器的z-index为2,设置四条边容器的z-index为1,这样边容器在水平平铺和垂直平铺时就置于四个顶角容器的下面了*/
+.t_l,.t_r,.b_l,.b_r { z-index:2; background-color:transparent;}
+/* t_m和b_m这两个容器是需要水平平铺,所以设置边容器的z-index为1,这样边容器在水平平铺就会置于两边的顶角容器下面，设置t_m,b_m的宽度为100%,让它水平平铺整个第一行的宽度*/
+.t_m,.b_m{ z-index:1px; width:100%; padding:0px 5px;}
+/* m_l和m_r这两个容器是需要垂直平铺,所以设置边容器的z-index为1,这样边容器在垂直平铺就会置于两边的顶角容器下面，设置m_l,m_r的高度为绝对大，让它一直向下垂直平铺，然后因为总容器设置了overflow:hidden，会将多余的部分切除*/
+.m_l,.m_r{ z-index:1px; height:10000px; margin:5px 0px;}
+ 
+/* 4、定位八个方向容器 */
+/* 定位四个顶角的位置及大小 */
+.t_l { left:0; top:0; width:10px; height:10px;  }
+.t_r { right:0; top:0; width:10px; height:10px;   }
+.b_l { left:0; bottom:0; width:10px; height:10px;  }
+.b_r { right:0; bottom:0; width:10px; height:10px;  }
+/* 定位四条边的位置及大小 */
+.t_m { top:0; height:10px;}
+.b_m { bottom:0; height:10px;}
+.m_l { left:0; top:0;width:10px; background-image:url(../images/rect_left.png); }
+.m_r { right:0; top:0; width:10px; background-image:url(../images/rect_right.png); }
+ 
+.m_m{width:100%;font-size:12px;color:#fff;}
+.m_m h3{text-align:center;font-size:14px;line-height:26px;}
+.m_m p{line-height:22px;padding:0 20px;}

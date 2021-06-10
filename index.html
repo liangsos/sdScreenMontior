@@ -1,0 +1,212 @@
+﻿<!doctype html>
+<html lang="ch">
+ <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" href="/favicon.ico" />
+  <title>山东水情信息监控</title>
+  <link href="static/css/common.css" rel="stylesheet" />  
+  <style type="text/css">
+	 .layui-layer-btn {
+	     background-color: #0a2938!important;
+	 	}
+		.layui-layer-title {
+		 background-color: #0a2938!important;
+		}
+  </style>
+ </head>
+ <body>
+  <div id="app">
+   <div data-v-common="" class="main_container">
+    <div data-v-common="" class="main_title">
+     <div data-v-common="" class="center_title">山东水情信息监控</div>
+     <button   class="btn-config" onclick="toConfig()">设置</button>
+    </div>
+    <div data-v-common="" class="main_top">
+     <div data-v-common="" class="main_left">
+      <div data-v-common="" class="common">
+       <div data-v-common="" class="common_title">
+        <img data-v-common="" id="left-1-icon" src="" /><span ref="left-1" class="fullscreen" id="left-1-title"></span>
+       </div>
+       <i data-v-common="" class="t_l_line"></i>
+       <i data-v-common="" class="l_t_line"></i>
+       <i data-v-common="" class="t_r_line"></i>
+       <i data-v-common="" class="r_t_line"></i>
+       <i data-v-common="" class="l_b_line"></i>
+       <i data-v-common="" class="b_l_line"></i>
+       <i data-v-common="" class="r_b_line"></i>
+       <i data-v-common="" class="b_r_line"></i>
+		  <div data-v-common="" class="left-1">
+			<img src="" id="left-1-img"  class="imgCss" style="display: none;"/>
+			<div  id="left-1-data" style="display: none;" class="dataContain"> 
+			</div>	
+        </div>
+      </div>
+      <div data-v-common="" class="common">
+       <div data-v-common="" class="common_title">
+        <img data-v-common="" id="left-2-icon" src="" /><span ref="left-2" class="fullscreen"  id="left-2-title"></span>
+       </div>
+       <i data-v-common="" class="t_l_line"></i>
+       <i data-v-common="" class="l_t_line"></i>
+       <i data-v-common="" class="t_r_line"></i>
+       <i data-v-common="" class="r_t_line"></i>
+       <i data-v-common="" class="l_b_line"></i>
+       <i data-v-common="" class="b_l_line"></i>
+       <i data-v-common="" class="r_b_line"></i>
+       <i data-v-common="" class="b_r_line"></i>
+        <div data-v-common="" class="left-2">
+			<img src="" id="left-2-img"  class="imgCss" style="display: none;"/>
+			<div  id="left-2-data" style="display: none;" class="dataContain">				
+			</div>							 
+		 <div>
+        </div>
+       </div>
+      </div>
+     </div>
+	
+     <div data-v-common="" class="main_center">
+      <div data-v-common="" class="common_title date">
+       <span data-v-common="" class="time fullscreen"  ref="center-top"  id="center-top-title"></span>
+      </div>
+      <i data-v-common="" class="t_l_line"></i>
+      <i data-v-common="" class="l_t_line"></i>
+      <i data-v-common="" class="t_r_line"></i>
+      <i data-v-common="" class="r_t_line"></i>
+      <i data-v-common="" class="l_b_line"></i>
+      <i data-v-common="" class="b_l_line"></i>
+      <i data-v-common="" class="r_b_line"></i>
+      <i data-v-common="" class="b_r_line"></i>
+      <div data-v-common="" class="center-top" id="center-top-div">
+        <img src="" id="center-top-img"  class="imgCss" style="display: none;"/>
+		<div  id="center-top-data" style="display: none;" class="dataContain"></div>
+      </div>
+	  
+     </div>
+     <div data-v-common="" class="main_right">
+      <div data-v-common="" class="common">
+       <div data-v-common="" class="common_title">
+        <img data-v-common="" id="right-1-icon" src="" /><span  ref="right-1" class="fullscreen" id="right-1-title"></span>
+       </div>
+       <i data-v-common="" class="t_l_line"></i>
+       <i data-v-common="" class="l_t_line"></i>
+       <i data-v-common="" class="t_r_line"></i>
+       <i data-v-common="" class="r_t_line"></i>
+       <i data-v-common="" class="l_b_line"></i>
+       <i data-v-common="" class="b_l_line"></i>
+       <i data-v-common="" class="r_b_line"></i>
+       <i data-v-common="" class="b_r_line"></i>
+       <div data-v-common="" class="right-1">
+          <img src="" id="right-1-img"  class="imgCss" style="display: none;"/>
+		 <div  id="right-1-data" style="display: none;" class="dataContain"></div>
+       </div>
+      </div>
+	  
+	  
+      <div data-v-common="" class="common">
+       <div data-v-common="" class="common_title">
+          <img data-v-common="" id="right-2-icon" src="" /><span ref="right-2" class="fullscreen" id="right-2-title"></span>
+       </div>
+       <i data-v-common="" class="t_l_line"></i>
+       <i data-v-common="" class="l_t_line"></i>
+       <i data-v-common="" class="t_r_line"></i>
+       <i data-v-common="" class="r_t_line"></i>
+       <i data-v-common="" class="l_b_line"></i>
+       <i data-v-common="" class="b_l_line"></i>
+       <i data-v-common="" class="r_b_line"></i>
+       <i data-v-common="" class="b_r_line"></i>
+        <div data-v-common="" class="right-2">
+           <img src="" id="right-2-img"  class="imgCss" style="display: none;"/>
+           <div  id="right-2-data" style="display: none;" class="dataContain"></div>
+        </div>
+      </div>
+     </div>
+    </div>
+	
+	
+    <div data-v-common="" class="main_bottom">
+     <div data-v-common="" class="common common-bottom">
+      <div data-v-common="" class="common_title">
+       <img data-v-common=""  id="left-3-icon"src="" /><span  ref="left-3" class="fullscreen" id="left-3-title"></span>
+      </div>
+      <i data-v-common="" class="t_l_line"></i>
+      <i data-v-common="" class="l_t_line"></i>
+      <i data-v-common="" class="t_r_line"></i>
+      <i data-v-common="" class="r_t_line"></i>
+      <i data-v-common="" class="l_b_line"></i>
+      <i data-v-common="" class="b_l_line"></i>
+      <i data-v-common="" class="r_b_line"></i>
+      <i data-v-common="" class="b_r_line"></i>
+      <div  data-v-common="" class="left-3">
+		  <img src="" id="left-3-img"  class="imgCss" style="display: none;"/>
+		  <div  id="left-3-data" style="display: none;" class="dataContain">
+		  </div>
+      </div>
+     </div>
+	 
+     <div data-v-common="" class="common common-bottom common-center">
+      <div data-v-common="" class="common_title">
+          <img data-v-common="" id="center-left-icon" src="" /><span  ref="center-left" class="fullscreen" id="center-left-title"></span>
+      </div>
+      <i data-v-common="" class="t_l_line"></i>
+      <i data-v-common="" class="l_t_line"></i>
+      <i data-v-common="" class="t_r_line"></i>
+      <i data-v-common="" class="r_t_line"></i>
+      <i data-v-common="" class="l_b_line"></i>
+      <i data-v-common="" class="b_l_line"></i>
+      <i data-v-common="" class="r_b_line"></i>
+      <i data-v-common="" class="b_r_line"></i>
+       <div data-v-common="" class="center-left">
+          <img src="" id="center-left-img"  class="imgCss" style="display: none;"/>
+          <div  id="center-left-data" style="display: none;" class="dataContain"></div>
+       </div>
+     </div>
+	 
+     <div data-v-common="" class="common common-bottom common-center">
+      <div data-v-common="" class="common_title">
+         <img data-v-common="" id="center-right-icon" src="" /><span  ref="center-right" class="fullscreen" id="center-right-title"></span>
+      </div>
+      <i data-v-common="" class="t_l_line"></i>
+      <i data-v-common="" class="l_t_line"></i>
+      <i data-v-common="" class="t_r_line"></i>
+      <i data-v-common="" class="r_t_line"></i>
+      <i data-v-common="" class="l_b_line"></i>
+      <i data-v-common="" class="b_l_line"></i>
+      <i data-v-common="" class="r_b_line"></i>
+      <i data-v-common="" class="b_r_line"></i>
+       <div data-v-common="" class="center-right">
+          <img src="" id="center-right-img"  class="imgCss" style="display: none;"/>
+          <div  id="center-right-data" style="display: none;" class="dataContain">
+		  </div>
+       </div>
+     </div>
+	 
+     <div data-v-common="" class="common common-bottom warnbox">
+      <div data-v-common="" class="common_title">
+          <img data-v-common="" id="right-3-icon" src="" /><span  ref="right-3" class="fullscreen" id="right-3-title"></span>
+      </div>
+      <i data-v-common="" class="t_l_line"></i>
+      <i data-v-common="" class="l_t_line"></i>
+      <i data-v-common="" class="t_r_line"></i>
+      <i data-v-common="" class="r_t_line"></i>
+      <i data-v-common="" class="l_b_line"></i>
+      <i data-v-common="" class="b_l_line"></i>
+      <i data-v-common="" class="r_b_line"></i>
+      <i data-v-common="" class="b_r_line"></i>
+        <div data-v-common="" class="right-3">
+           <img src="" id="right-3-img"  class="imgCss" style="display: none;"/>
+           <div  id="right-3-data" style="display: none;" class="dataContain"></div>
+        </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  
+  <script src="static/js/jquery.js"  type="text/javascript"></script>
+  <script src="static/js/HashMap.js"  type="text/javascript" ></script>  
+  <script src="static/js/timerRresh.js"  type="text/javascript"></script>  
+  <script src="static/js/layer/layer.js" type="text/javascript"></script>
+  <script src="static/js/layer/tlzh.layer.js" type="text/javascript"></script>
+  <script src="./config.js"  type="text/javascript"></script>
+ </body>
+</html>

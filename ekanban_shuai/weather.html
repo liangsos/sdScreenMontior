@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天气监视</title>
+    <style>
+        html,body,*{padding: 0;margin: 0;overflow:hidden;}
+        #news {
+            height: 100%;
+            overflow: hidden;
+            background-color:transparent;
+        }
+        .notices_box {
+            margin-top: 10px;
+        }
+        .notice {
+            margin-bottom: 8px;
+            list-style: disc;
+            font-size: 16px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+        }
+        .notice div{width: 25%;text-align: center;}
+        .max-min{text-overflow:ellipsis}
+        
+        li.notice:hover {
+            cursor: pointer;
+            color: #0bf7c4;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="news">
+        <ul class="notices_box">
+            <li id="0" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+            <li id="1" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+            <li id="2" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+            <li id="3" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+            <li id="4" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+            <li id="5" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+            <li id="6" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+            <li id="7" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+            <li id="8" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+            <li id="9" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+            <li id="10" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+            <li id="11" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+            <li id="12" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+            <li id="13" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+            <li id="14" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+            <li id="15" class="notice">
+                <div class="cs"></div>
+                <div class="max-min"></div>
+                <div class="weather-image"><img src=""></div>
+                <div class="ms"></div>
+            </li>
+        </ul>
+    </div>
+    <script src="js/jquery-1.11.1.min.js" charset="utf-8"></script>
+    <script>
+        $(function () {
+            var urlParm = window.location.search;
+            var addvcdArr = urlParm.split("addvcd=");
+            var addvcd;
+            if(addvcdArr.length > 1){
+                addvcd = addvcdArr[1];
+            }else{
+                addvcd = "";
+            }
+            var postObj = {
+                "addvcd": addvcd
+            }
+        setInterval(function(){window.location.reload()},60000*60*6)
+            //获取全省天气预报
+            $.ajax({
+                type:'POST',
+                url:"http://10.37.1.155:9001/sd-api/rs/get_TqYb_Jk",
+                contentType:'application/json',
+                dataType:'json',
+                data:JSON.stringify(postObj),
+                success: function (res) {
+                console.group('--天气预报--')
+                console.log(res.data)
+                var weatherData = res.data
+                for(var i = 0;i<weatherData.length;i++){
+                    $('#'+i).find('.cs').html(weatherData[i].cs);
+                    $('#'+i).find('.max-min').html(weatherData[i].dw +'~'+weatherData[i].gw);
+                    $('#'+i).find('.weather-image').find('img').attr('src',weatherData[i].icon);
+                    $('#'+i).find('.ms').html(weatherData[i].ms);
+                }
+                }
+            })
+            // 数据信息滚动
+            var $this = $("#news");
+            var scrollTimer;
+            $this.hover(function () {
+                clearInterval(scrollTimer);
+            }, function () {
+                scrollTimer = setInterval(function () {
+                    scrollNews($this);
+                }, 2000);
+            }).trigger("mouseleave");
+        });
+        // 数据信息滚动
+        function scrollNews(obj) {
+            var $self = obj.find("ul");
+            var lineHeight = $self.find("li:first").height();
+            $self.animate({
+                "marginTop": -lineHeight + 'px'
+            }, 600, function () {
+                $self.css({
+                    marginTop: 0
+                }).find("li:first").appendTo($self);
+            })
+        }
+    </script>
+</body>
+
+</html>

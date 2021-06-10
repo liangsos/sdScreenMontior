@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>山东水情信息监控平台</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/sudoku.css" rel="stylesheet">
+<link href="mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
+<style type="text/css"></style>
+</head>
+<body bgcolor="#082E83" scroll="no" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<img src="images/sd_water_info_bg.jpg" class="maindiv" alt="">
+<img src="images/sd_water_info_banner.jpg" class="top-banner" alt="">
+<div class="maindiv" >
+	<div class="main2div">
+		<table cellpadding="0" cellspacing="0">
+			<tr class="top-logo">
+				<td>
+					<img src="images/logo.png" alt="">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table cellpadding="0" cellspacing="0">
+						<tr class="sudoku-tr">
+							<td class="sudoku-td">
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--告警信息-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar">时间：2021-05-16 &nbsp;</div>
+													<div class="title-text"><img src="images/title_gaojingxinxi_ico.png" alt="" width="24" height="24"></img></div>
+													<div class="title-text gradient-title-text">告警信息</div>
+												</td></tr>
+												<tr><td class="container-out-td">
+													<div class="container container-table-div" style="width: 100%;height: 100%;" id="container_gaojingxinxi">
+														<!-- <iframe src="./ekanban_shuai/alarm.html" style="width: 100%;height: 100%;" frameborder="0"></iframe> -->
+														<div cellpadding="0" cellspacing="1" class="default-table" id="warning_table">
+															<!-- <tr class="table-header-style"><td>站名</td><td>水位</td><td>流量</td><td>时间</td><td>告警类型</td><td>超警值</td></tr>
+															<tr class="table-body-style"><td>站名</td><td>25.52</td><td>12.55</td><td>05-16 08:00</td><td>超警戒</td><td>0.05</td></tr>
+															<tr class="table-body-style"><td>站名</td><td>25.52</td><td>12.55</td><td>05-16 08:00</td><td>超警戒</td><td>0.05</td></tr>
+															<tr class="table-body-style"><td>站名</td><td>25.52</td><td>12.55</td><td>05-16 08:00</td><td>超警戒</td><td>0.05</td></tr>
+															<tr class="table-body-style"><td>站名</td><td>25.52</td><td>12.55</td><td>05-16 08:00</td><td>超警戒</td><td>0.05</td></tr>
+															<tr class="table-body-style"><td>站名</td><td>25.52</td><td>12.55</td><td>05-16 08:00</td><td>超警戒</td><td>0.05</td></tr> -->
+															<iframe src="./ekanban_shuai/alarm.html" style="width: 100%;height: 100%;" frameborder="0"></iframe>
+														</div>
+														<div class="clearbox"></div>
+													</div>
+													<!-- <iframe src="./ekanban_shuai/arearain.html" frameborder="0"></iframe> -->
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+							</td>
+							<td colspan="2" rowspan="2">
+								<table cellpadding="0" cellspacing="0" class="big-container-table">
+									<tr>
+										<td class="big-container-conner"><img src="images/big_rect_conner_top_left.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-conner-horizontal"><img src="images/big_rect_conner_top.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-horizontal"><img src="images/big_rect_top.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-conner-horizontal"><img src="images/big_rect_conner_top.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-conner"><img src="images/big_rect_conner_top_right.png" width="100%" height="100%" alt=""></td>
+									</tr>
+									<tr>
+										<td class="big-container-conner-vertical"><img src="images/big_rect_conner_left.png" height="100%" width="100%" alt=""></td>
+										<!--地图监视 中间大块地图显示区域-->
+										<td class="big-container-bg" id="sd_map_bg" colspan="3" rowspan="3">
+											<div class="map-legend" id="map_legend"></div>
+											<div class="map-option" id="map_option">
+												<div>
+													<img id="img_option" alt="" src="images/controls/triangle_down.png" width="11" height="11" onclick="optionClick();"/>
+												</div>
+												<div class="option-content">
+													<img alt="" src="images/controls/ico_chaoxunxian.png" width="17" height="17" onclick=""/>
+													超汛限
+													<img alt="" src="images/controls/ico_chaosheji.png" width="17" height="17" onclick=""/>
+													超设计
+												</div>
+												<div class="option-content">
+													<img alt="" src="images/controls/ico_chaojingjie.png" width="17" height="17" onclick=""/>
+													超警戒
+													<img alt="" src="images/controls/ico_chaojiaohe.png" width="17" height="17" onclick=""/>
+													超校核
+												</div>
+												<div class="option-content">
+													<img alt="" src="images/controls/ico_chaobaozheng.png" width="17" height="17" onclick=""/>
+													超保证
+													<img alt="" src="images/controls/ico_chaolishi.png" width="17" height="17" onclick=""/>
+													超历史
+												</div>
+												<div class="option-content">
+													<img id="option_yuliang" alt="" src="images/controls/radio_open.png" width="17" height="17" onclick="optionYuLiangClick()"/>
+													雨量图
+													<img id="option_leida" alt="" src="images/controls/radio_open.png" width="17" height="17" onclick="optionLeiDaClick()"/>
+													雷达图
+												</div>
+											</div>
+											<div class="sd-map" id="sd_map"></div>
+										</td>
+										<td class="big-container-conner-vertical"><img src="images/big_rect_conner_right.png" height="100%" width="100%" alt=""></td>
+									</tr>
+									<tr>
+										<td class="big-container-vertical-left"><img src="images/transparent_img.png" height="100%" width="100%" alt=""></td>
+										<td class="big-container-vertical-right"><img src="images/transparent_img.png" height="100%" width="100%" alt=""></td>
+									</tr>
+									<tr>
+										<td class="big-container-conner-vertical"><img src="images/big_rect_conner_left.png" height="100%" width="100%" alt=""></td>
+										<td class="big-container-conner-vertical"><img src="images/big_rect_conner_right.png" height="100%" width="100%" alt=""></td>
+									</tr>
+									<tr>
+										<td class="big-container-conner"><img src="images/big_rect_conner_bottom_left.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-conner-horizontal"><img src="images/big_rect_conner_bottom.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-horizontal"><img src="images/big_rect_bottom.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-conner-horizontal"><img src="images/big_rect_conner_bottom.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-conner"><img src="images/big_rect_conner_bottom_right.png" width="100%" height="100%" alt=""></td>
+									</tr>
+								</table>
+							</td>
+							<td class="sudoku-td">
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--面雨量-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar">时间：2021-05-16 &nbsp;</div>
+													<div class="title-text"><img src="images/title_mianyuliang_ico.png" alt="" width="24" height="24"></img></div>
+													<div class="title-text gradient-title-text">面雨量</div>
+												</td></tr>
+												<tr><td class="container-out-td">
+													<div class="container container-table-div" id="container_mianyuliang">
+														<table cellpadding="0" cellspacing="1" class="default-table" id="rain_table">
+															<tr class="table-header-style"><td>分区</td><td>面积</td><td>雨量</td></tr>
+															<tr class="table-body-style"><td>济南</td><td>10244</td><td>2</td></tr>
+															<tr class="table-body-style"><td>青岛</td><td>11293</td><td>1.5</td></tr>
+															<tr class="table-body-style"><td>淄博</td><td>5965</td><td>5</td></tr>
+															<tr class="table-body-style"><td>枣庄</td><td>4563</td><td>25</td></tr>
+															<tr class="table-body-style"><td>东营</td><td>8243</td><td>2</td></tr>
+														</table>
+													</div>
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+								
+							</td>
+						</tr>
+						<tr class="sudoku-tr">
+							<td>
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--水情监视-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar">时间：2021-05-16 &nbsp;</div>
+													<div class="title-text"><img src="images/title_shuiqingjianshi_ico.png" alt="" width="24" height="24"></img></div>
+													<div class="title-text gradient-title-text">水情监视</div>
+												</td></tr>
+												<tr><td>
+													<div class="container" id="container_shuiqingjianshi">
+														<img id="img_shuiqingjianshi" class="img-content" alt="" src="images/content_shuiqingjianshi.png" style =""/>
+														<div class="shuiqin-combobox">31000101-临清</div>
+													</div>
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--降雨预报-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar">时间：2021-05-16 &nbsp;</div>
+													<div class="title-text"><img src="images/title_jiangyuyubao_ico.png" alt="" width="24" height="24"></img></div>
+													<div class="title-text gradient-title-text">降雨预报</div>
+												</td></tr>
+												<tr><td>
+													<div class="container" id="container_jiangyuyubao">
+														<img id="img_jiangyuyubao" class="img-content" alt="" src="images/content_jiangyuyubao.png" style =""/>
+													</div>
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--天气监视-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar">时间：2021-05-16 &nbsp;</div>
+													<div class="title-text"><img src="images/title_tianqijianshi_ico.png" alt="" width="24" height="24"></img></div>
+													<div class="title-text gradient-title-text">天气监视</div>
+												</td></tr>
+												<tr><td class="container-out-td">
+													<div class="container container-table-div" id="container_tianqijianshi">
+														<table cellpadding="0" cellspacing="1" class="weather-table" id="weather_table">
+															<tr class="table-body-style"><td>烟台</td><td>9°C ~ 14°C</td><td><img src="images/weather_duoyun.png" class="table-weather-img" alt=""></td><td>多云转阴</td></tr>
+															<tr class="table-body-style"><td>潍坊</td><td>10°C ~ 19°C</td><td><img src="images/weather_yin.png" class="table-weather-img" alt=""></td><td>阴转小雨</td></tr>
+															<tr class="table-body-style"><td>济宁</td><td>13°C ~ 19°C</td><td><img src="images/weather_yin.png" class="table-weather-img" alt=""></td><td>阴转小雨</td></tr>
+															<tr class="table-body-style"><td>泰安</td><td>12°C ~ 18°C</td><td><img src="images/weather_qing.png" class="table-weather-img" alt=""></td><td>晴转多云</td></tr>
+														</table>
+													</div>
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--站点监视（水情）-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar">时间：2021-05-16 &nbsp;</div>
+													<div class="title-text"><img src="images/title_zhandianjianshi_shuiqing_ico.png" alt="" width="24" height="24"></img></div>
+													<div class="title-text gradient-title-text">站点监视（水情）</div>
+												</td></tr>
+												<tr><td>
+													<div class="container" id="container_zhandianjianshi">
+														<img id="img_zhandianjianshi" class="img-content" alt="" src="images/content_zhandianjianshi.png" style =""/>
+													</div>
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+							</td>
+							<td class="sudoku-td">
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--值班人员-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar">时间：2021-05-16 &nbsp;</div>
+													<div class="title-text"><img src="images/title_zhibanrenyuan_ico.png" alt="" width="24" height="24"></img></div>
+													<div class="title-text gradient-title-text">值班人员</div>
+												</td></tr>
+												<tr><td class="container-out-td2">
+													<div class="container container-table-div" id="container_zhibanrenyuan">
+														<table cellpadding="0" cellspacing="0" class="table-zhibanrenyuan duty-table" id="duty_table">
+															<tr class="bordered-table"><td class="table-header-style" rowspan="2">带班</td><td class="table-body-style table-zhibanrenyuan-col1">姓名</td><td class="table-body-style">省局值班人员</td></tr>
+															<tr class="bordered-table"><td class="table-body-style">电话</td><td class="table-body-style">18188888888</td></tr>
+															<tr class="bordered-table"><td class="table-header-style" rowspan="2">主班</td><td class="table-body-style">姓名</td><td class="table-body-style">省局值班人员</td></tr>
+															<tr class="bordered-table"><td class="table-body-style">电话</td><td class="table-body-style">18188888888</td></tr>
+															<tr class="bordered-table"><td class="table-header-style" rowspan="2">副班</td><td class="table-body-style">姓名</td><td class="table-body-style">省局值班人员</td></tr>
+															<tr class="bordered-table"><td class="table-body-style">电话</td><td class="table-body-style">18188888888</td></tr>
+														</table>
+													</div>
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--雷达监视-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar">时间：2021-05-16 &nbsp;</div>
+													<div class="title-text"><img src="images/title_leidajianshi_ico.png" alt="" width="24" height="24"></img></div>
+													<div class="title-text gradient-title-text">雷达监视</div>
+												</td></tr>
+												<tr><td>
+													<div class="container" id="coutainer_leidajianshi">
+														<img id="img_leidajianshi" class="img-content" alt="" src="images/content_leidajianshi.png"/>
+													</div>
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr class="foot-banner">
+				<td>
+					<img src="images/sd_water_info_footer.jpg" class="footer-banner-img" width="100%" height="100%" alt="">
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="mCustomScrollbar/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="mCustomScrollbar/jquery-ui-1.10.4.min.js"></script>
+<script type="text/javascript" src="mCustomScrollbar/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="mCustomScrollbar/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript">
+	window.onresize = function() { 
+		resizeElement();
+	}
+	window.onload = function() {
+		$(".container-table-div").mCustomScrollbar();
+		resizeElement();
+	}
+</script>
+</body>
+</html>

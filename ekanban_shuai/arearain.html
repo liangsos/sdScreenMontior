@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分区面雨量</title>
+    <style>
+        html,body,*{padding: 0;margin: 0;overflow: hidden;}
+        #infos {
+            height: 100%;
+            overflow: hidden;
+            background-color: transparent;
+            /* background-color: rgb(53, 54, 58); */
+        }
+        .title{
+            z-index: 9;
+            height: 35px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #2C58A6;
+        }
+        .notices_box {
+            margin-top: 35px;
+            z-index: 1;
+        }
+        .notice {
+            list-style: disc;
+            font-size: 16px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;  
+            border-right: solid 1px #2c58a6;
+        }
+
+        .notice div{
+			width: 33%;
+			text-align: center;
+			min-height: 35px;
+			max-height: 35px;
+			line-height: 35px;
+			border-left: solid 1px #2c58a6;
+            border-bottom: solid 1px #2c58a6;
+        }
+
+        li.notice:hover {
+            cursor: pointer;
+            color: #0bf7c4;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="infos">
+        <div class="notice title">
+            <div class="item">分区</div>
+            <div class="item">面积</div>
+            <div class="item">雨量</div>
+        </div>
+        <ul class="notices_box">
+        </ul>
+    </div>
+    <script src="js/jquery-1.11.1.min.js" charset="utf-8"></script>
+    <script>
+        $(function () {
+            var urlParm = window.location.search;
+            var addvcdArr = urlParm.split("addvcd=");
+            var addvcd = addvcdArr[1];
+            var iframe_height = $('#right-1-data iframe',parent.document).height();
+			var alarmData_count = 0;
+            setInterval(function(){window.location.reload()},1000*60*30)
+            //获取当天分区面雨量数据
+            $.ajax({
+                type:'POST',
+                url:"http://10.37.1.155:9001/sd-api/rs/get_Sclyb",
+                dataType:'json',
+                contentType : "application/json",
+                data:JSON.stringify({"addvcd": addvcd}),
+                success: function (res) {
+                    if(res.code){
+                        var resultData = res.data[0].myl;
+                        var xzfq = resultData.split('|');
+                        var showData = [];
+                        var html = '';
+                        for(var i = 0; i < xzfq.length; i++) {
+                            if(addvcd==37){
+                                if(!xzfq[i].includes('-')){
+                                    showData.push(xzfq[i]);
+                                }
+                            }else{
+                                if(xzfq[i].includes('-')){
+                                    var dot =  xzfq[i].indexOf('-');
+                                    var newStr = xzfq[i].slice(dot+1);
+                                    showData.push(newStr);
+                                }else{
+                                    showData.push(xzfq[i]);
+                                }
+                            }
+                        }
+
+                        for(var j = 0,len = showData.length;j<len;j++){
+                            var xzfq_data = showData[j].split(',');
+                            html+='<li class="notice">';
+                            html+='<div class="cs">'+xzfq_data[0]+'</div>';
+                            html+='<div class="cs">'+xzfq_data[1]+'</div>';
+                            html+='<div class="cs">'+xzfq_data[2]+'</div>';
+                            html+='</li>';
+                        }
+                        $('.notices_box').empty().append(html);
+                        alarmData_count = xzfq.length;
+                    }else{
+						console.log('error');
+                    }
+                    
+                    // 信息滚动
+					var $this = $("#infos");
+					var scrollTimer;
+					if(iframe_height<alarmData_count*50){
+						$this.hover(function () {
+							clearInterval(scrollTimer);
+						}, function () {
+							scrollTimer = setInterval(function () {
+								scrollAction($this);
+							}, 2000);
+						}).trigger("mouseleave");
+					}
+                    
+                }
+            })
+            
+            
+        });
+        // 信息滚动
+        function scrollAction(obj) {
+            var $self = obj.find("ul");
+            var lineHeight = $self.find("li:first").height();
+            $self.animate({
+                "marginTop": -lineHeight + 'px'
+            }, 600, function () {
+                $self.css({
+                    marginTop: 0
+                }).find("li:first").appendTo($self);
+            })
+        }
+    </script>
+</body>
+
+</html>

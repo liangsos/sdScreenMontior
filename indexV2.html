@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>山东水情信息监控平台</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/sudoku.css" rel="stylesheet">
+<link href="mCustomScrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
+<style type="text/css"></style>
+</head>
+<body bgcolor="#082E83" scroll="no" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<img src="images/sd_water_info_bg.jpg" class="maindiv" alt="">
+<img src="images/sd_water_info_banner.jpg" class="top-banner" alt="">
+<div class="maindiv" >
+	<div class="main2div">
+		<table cellpadding="0" cellspacing="0">
+			<tr class="top-logo">
+				<td>
+					<img src="images/logo.png" alt="">
+					<button   class="btn-config" onclick="toConfig()">设置</button>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table cellpadding="0" cellspacing="0">
+						<tr class="sudoku-tr">
+							<td class="sudoku-td">
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--告警信息-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar"></div>
+													<div class="title-text"><img id="left-1-icon" src="" alt="" width="24" height="24"></img></div>
+													<div id="left-1-title" ref="left-1" class="fullscreen title-text gradient-title-text"></div>
+												</td></tr>
+												<tr><td class="container-out-td">
+													<div class="container container-table-div" id="container_gaojingxinxi">
+														<div cellpadding="0" cellspacing="1" class="default-table dataContain" id="warning_table">
+															<div  id="left-1-data" style="display: none;" class="dataContain"> 
+																<!-- <iframe src="./ekanban_shuai/alarm.html" style="width: 100%;height: 100%;" frameborder="0"></iframe> -->
+															</div>
+														<div class="clearbox"></div>
+														</div>
+													</div>
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+							</td>
+							<td colspan="2" rowspan="2">
+								<table cellpadding="0" cellspacing="0" class="big-container-table">
+									<tr><td class="container-header">
+										<!-- <div class="title-bar">时间：2021-05-16 &nbsp;</div> -->
+										<!-- <div class="title-text"><img src="images/title_gaojingxinxi_ico.png" alt="" width="24" height="24"></img></div> -->
+										<div id="center-top-title" ref="center-top" class="fullscreen title-text gradient-title-text"></div>
+									</td></tr>
+									<tr>
+										<td class="big-container-conner"><img src="images/big_rect_conner_top_left.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-conner-horizontal"><img src="images/big_rect_conner_top.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-horizontal"><img src="images/big_rect_top.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-conner-horizontal"><img src="images/big_rect_conner_top.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-conner"><img src="images/big_rect_conner_top_right.png" width="100%" height="100%" alt=""></td>
+									</tr>
+									<tr>
+										<td class="big-container-conner-vertical"><img src="images/big_rect_conner_left.png" height="100%" width="100%" alt=""></td>
+										<!--地图监视 中间大块地图显示区域-->
+										<td class="big-container-bg" id="sd_map_bg" colspan="3" rowspan="3">
+											<div  id="center-top-data" style="display: none;" class="dataContain"></div>
+										</td>
+										<td class="big-container-conner-vertical"><img src="images/big_rect_conner_right.png" height="100%" width="100%" alt=""></td>
+									</tr>
+									<tr>
+										<td class="big-container-vertical-left"><img src="images/transparent_img.png" height="100%" width="100%" alt=""></td>
+										<td class="big-container-vertical-right"><img src="images/transparent_img.png" height="100%" width="100%" alt=""></td>
+									</tr>
+									<tr>
+										<td class="big-container-conner-vertical"><img src="images/big_rect_conner_left.png" height="100%" width="100%" alt=""></td>
+										<td class="big-container-conner-vertical"><img src="images/big_rect_conner_right.png" height="100%" width="100%" alt=""></td>
+									</tr>
+									<tr>
+										<td class="big-container-conner"><img src="images/big_rect_conner_bottom_left.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-conner-horizontal"><img src="images/big_rect_conner_bottom.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-horizontal"><img src="images/big_rect_bottom.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-conner-horizontal"><img src="images/big_rect_conner_bottom.png" width="100%" height="100%" alt=""></td>
+										<td class="big-container-conner"><img src="images/big_rect_conner_bottom_right.png" width="100%" height="100%" alt=""></td>
+									</tr>
+								</table>
+							</td>
+							<td class="sudoku-td">
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--面雨量-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar"></div>
+													<div class="title-text"><img id="right-1-icon" src="" alt="" width="24" height="24"></img></div>
+													<div id="right-1-title" ref="right-1" class="fullscreen title-text gradient-title-text"></div>
+												</td></tr>
+												<tr><td class="container-out-td">
+													<div class="container container-table-div" id="container_mianyuliang">
+														<div cellpadding="0" cellspacing="1" class="default-table dataContain" id="rain_table">
+															<div  id="right-1-data" style="display: none;" class="dataContain"></div>
+														</div>
+													</div>
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+								
+							</td>
+						</tr>
+						<tr class="sudoku-tr">
+							<td>
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--水情监视-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar"></div>
+													<div class="title-text"><img id="left-2-icon" src="" alt="" width="24" height="24"></img></div>
+													<div id="left-2-title" ref="left-2" class="fullscreen title-text gradient-title-text"></div>
+												</td></tr>
+												<tr><td>
+													<div class="container" id="container_shuiqingjianshi">
+														<div  id="left-2-data" style="display: none;" class="dataContain">	
+													</div>
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--降雨预报-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar"></div>
+													<div class="title-text"><img id="right-2-icon" src="" alt="" width="24" height="24"></img></div>
+													<div id="right-2-title" ref="right-2" class="fullscreen title-text gradient-title-text"></div>
+												</td></tr>
+												<tr><td>
+													<div class="container" id="container_jiangyuyubao">
+														<div  id="right-2-data" style="display: none;" class="dataContain"></div>
+													</div>
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--天气监视-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar"></div>
+													<div class="title-text"><img id="left-3-icon" src="" alt="" width="24" height="24"></img></div>
+													<div id="left-3-title" ref="left-3" class="fullscreen title-text gradient-title-text"></div>
+												</td></tr>
+												<tr><td class="container-out-td">
+													<div class="container container-table-div" id="container_tianqijianshi">
+														<div cellpadding="0" cellspacing="1" class="weather-table dataContain" id="weather_table">
+															<div  id="left-3-data" style="display: none;" class="dataContain"></div>
+														</div>
+													</div>
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--站点监视（水情）-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar"></div>
+													<div class="title-text"><img id="center-left-icon" src="" alt="" width="24" height="24"></img></div>
+													<div id="center-left-title" ref="center-left" class="fullscreen title-text gradient-title-text"></div>
+												</td></tr>
+												<tr><td>
+													<div class="container" id="container_zhandianjianshi">
+														<div  id="center-left-data" style="display: none;" class="dataContain"></div>
+													</div>
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+							</td>
+							<td class="sudoku-td">
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--值班人员-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar"></div>
+													<div class="title-text"><img id="center-right-icon" src="" alt="" width="24" height="24"></img></div>
+													<div id="center-right-title" ref="center-right" class="fullscreen title-text gradient-title-text"></div>
+												</td></tr>
+												<tr><td class="container-out-td2">
+													<div class="container" id="container_zhibanrenyuan">
+														<div cellpadding="0" cellspacing="0" class="table-zhibanrenyuan duty-table dataContain" id="duty_table">
+															<div  id="center-right-data" style="display: none;" class="dataContain"></div>
+														</div>
+													</div>
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<table cellpadding="0" cellspacing="0" class="container-table">
+									<tr>
+										<td class="container-conner container-top-left"></td>
+										<td class="container-top"></td>
+										<td class="container-conner container-top-right"></td>
+									</tr>
+									<tr>
+										<td class="container-left"></td>
+										<!--雷达监视-->
+										<td>
+											<table cellpadding="0" cellspacing="0">
+												<tr><td class="container-header">
+													<div class="title-bar"></div>
+													<div class="title-text"><img id="right-3-icon" src="" alt="" width="24" height="24"></img></div>
+													<div id="right-3-title" ref="right-3" class="fullscreen title-text gradient-title-text"></div>
+												</td></tr>
+												<tr><td>
+													<div class="container" id="coutainer_leidajianshi">
+														<div  id="right-3-data" style="display: none;" class="dataContain"></div>
+													</div>
+												</td></tr>
+											</table>
+										</td>
+										<td class="container-right"></td>
+									</tr>
+									<tr>
+										<td class="container-conner container-bottom-left"></td>
+										<td class="container-bottom"></td>
+										<td class="container-conner container-bottom-right"></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr class="foot-banner">
+				<td>
+					<img src="images/sd_water_info_footer.jpg" class="footer-banner-img" width="100%" height="100%" alt="">
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="mCustomScrollbar/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="mCustomScrollbar/jquery-ui-1.10.4.min.js"></script>
+<script type="text/javascript" src="mCustomScrollbar/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="mCustomScrollbar/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript">
+	window.onresize = function() { 
+		resizeElement();
+	}
+	window.onload = function() {
+		$(".container-table-div").mCustomScrollbar();
+		resizeElement();
+	}
+</script>
+<script type="text/javascript" src="js/HashMap.js"></script>
+<script type="text/javascript" src="js/timerRresh.js"></script>
+<script type="text/javascript" src="js/layer/layer.js"></script>
+<script src="js/layer/tlzh.layer.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/config.js"></script>
+</body>
+</html>

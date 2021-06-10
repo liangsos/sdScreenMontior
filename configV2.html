@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="mCustomScrollbar/jquery-1.11.0.min.js"></script>
+		<script src="js/HashMap.js"  type="text/javascript" ></script>
+		<script src="js/config.js"  type="text/javascript"></script>
+		<style type="text/css">
+			/*  */
+			table,table tr th, table tr td {
+				 border:3px solid #2196f3; 
+				 margin:  0 auto;
+				 color: white;
+				 }
+			 
+			table {
+				width: 560px;
+				height: 280px;
+				background-color: transparent;
+				border-spacing: 0;
+				border-collapse: collapse;
+				min-height: 25px; 
+				line-height: 25px; 
+				text-align: center; 
+				border-collapse: collapse;
+				border:3px solid #2196f3; 
+			}
+			.selctDiv[data-v-common] {
+				/* position: relative;
+				top: 10px;
+				left: 330px; */
+				margin: 0 auto;
+				height: 30px;
+				width: 130px;
+				/* margin-top: -34px; */
+			}
+			
+			.selctDiv select[data-v-common] {
+				width: 100%;
+				height: 100%;
+				outline: none;
+				border: 1px solid #4788fb;
+				color: #fff;
+				background-color: transparent
+			}
+			
+			.selctDiv select option[data-v-common] {
+				background-color: #2c58a6
+			}
+			
+		</style>
+	</head>
+	<body style="background-color: #0a2938">
+		<div style="margin:  0 auto;">
+			<table  id="samleTbl">
+				<tr>
+					<td>
+					  <div data-v-common="" class="selctDiv">左-1
+					   <select data-v-common=""  id="left-1" ref="left_1_select">
+						 <!-- <option data-v-common="" value="1" selected="selected">闸站</option>
+					     <option data-v-common="" value="2">泵站</option>
+					     <option data-v-common="" value="3">橡胶坝</option>
+					     <option data-v-common="" value="4">气盾坝</option>
+					     <option data-v-common="" value="5">雨水调蓄池</option>
+					     <option data-v-common="" value="6">污水处理厂</option> --> 
+					   </select>
+					  </div>
+					</td>
+					<td colspan="2" rowspan="2">
+						 <div data-v-common="" class="selctDiv">中-上
+						<select data-v-common=""  id="center-top"  ref="center_top_select"> </select>
+						</div>
+						</td>
+					<td>
+						 <div data-v-common="" class="selctDiv">右-1
+						 <select data-v-common=""  id="right-1"  ref="right_1_select"> </select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					  <div data-v-common="" class="selctDiv">左-2
+					    <select data-v-common=""  id="left-2"  ref="left_2_select"> </select>
+					 </div>
+					</td>
+					<td>
+					  <div data-v-common="" class="selctDiv">右-2
+					    <select data-v-common=""  id="right-2"  ref="right_2_select"> </select>
+					 </div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					  <div data-v-common="" class="selctDiv">左-3
+					   <select data-v-common=""  id="left-3"  ref="left_3_select"></select>
+					  </div>
+					</td>
+					<td>
+						<div data-v-common="" class="selctDiv">中-左
+						 <select data-v-common=""  id="center-left"  ref="center_left_select"></select>
+						</div>
+					</td>
+					<td>
+						<div data-v-common="" class="selctDiv">中-右
+						 <select data-v-common=""  id="center-right"  ref="center_right_select"></select>
+						</div>
+					</td>
+					<td>
+						<div data-v-common="" class="selctDiv">右-3
+						  <select data-v-common=""  id="right-3"  ref="right_3_select"></select>
+						</div>
+					</td>
+				</tr>
+			</table>
+			
+		</div>
+	</body>
+</html>
+<script type="application/javascript">
+	
+	$(function(){
+		iniConfig();
+	});
+</script>
